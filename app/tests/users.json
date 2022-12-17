@@ -1,0 +1,20 @@
+[
+    {
+        "_id":"636a3da4bdc320dbedcb22c3",
+        "email": "admin@admin.com",
+        "role": "admin",
+        "password": "secret"
+    },
+    {
+        "email": "test@test.com",
+        "role": "regular",
+        "interests": ["Politics"],
+        "password": "secret"
+    },
+    {
+        "email": "test2@test.com",
+        "role": "regular",
+        "interests": ["Politics", "Entertainment"],
+        "password": "secret"
+    }
+]

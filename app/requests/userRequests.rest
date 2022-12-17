@@ -1,0 +1,36 @@
+@hostname = localhost
+@port = 5001
+@host = {{hostname}}:{{port}}
+
+### Get all users
+GET http://{{host}}/api/users/
+### Get user by id
+GET http://{{host}}/api/users/6388ac3556218f855d7ce2c0
+### Post user
+POST http://{{host}}/api/users/
+Content-Type: application/json
+
+{
+    "email": "test",
+    "role": "regular",
+    "interests": ["Politics"],
+    "password": "secret"
+}
+
+### Post admin user
+POST http://{{host}}/api/users/
+Content-Type: application/json
+
+{
+    "email": "admin",
+    "role": "admin",
+    "interests": ["Politics"],
+    "password": "secret"
+}
+### Put user
+PUT http://{{host}}/api/users/6387293eb665d3abe496ebb1
+Content-Type: application/json
+
+{
+    "interests": ["Sports"]
+}

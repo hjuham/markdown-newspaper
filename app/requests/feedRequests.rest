@@ -1,0 +1,6 @@
+@hostname = localhost
+@port = 5001
+@host = {{hostname}}:{{port}}
+
+### Get feed
+GET http://{{host}}/api/feed

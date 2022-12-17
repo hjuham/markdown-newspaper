@@ -1,0 +1,27 @@
+[
+    {
+        "_id":"636a3da4bdc320dbedcb22c3",
+        "title": "test title 1",
+        "author": "test author 1",
+        "imageURL": "test imageurl 1",
+        "tags": ["Politics"],
+        "weight": 5,
+        "content": "Lorem ipsum"
+    },
+    {
+        "title": "test title 2",
+        "author": "test author 2",
+        "imageURL": "test imageurl 2",
+        "tags": ["Sports"],
+        "weight": 10,
+        "content": "Lorem ipsum"
+    },
+    {
+        "title": "test title 3",
+        "author": "test author 3",
+        "imageURL": "test imageurl 3",
+        "tags": ["Politics", "Entertainment"],
+        "weight": 5,
+        "content": "Lorem ipsum"
+    }
+]

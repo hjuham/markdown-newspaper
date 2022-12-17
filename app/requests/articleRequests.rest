@@ -1,0 +1,39 @@
+@hostname = localhost
+@port = 5001
+@host = {{hostname}}:{{port}}
+### Articles
+
+### Get all articles
+GET http://{{host}}/api/articles/
+### Get articles with query
+GET http://{{host}}/api/articles?title=test
+### Get articles with date query
+GET http://{{host}}/api/articles?start=2022-11-26&end=2023
+### Get articles with sort query
+GET http://{{host}}/api/articles/?sort=weight
+### Get articles with tags query
+GET http://{{host}}/api/articles?tags=Sports&tags=Politics
+### Get single article
+GET http://{{host}}/api/articles/6388a3bd32dfa0093f0d3049
+### Post article
+POST http://{{host}}/api/articles/
+Content-Type: application/json
+
+{
+    "title":"test title entertainment",
+    "tags": ["Entertainment"],
+    "content": "Test content",
+    "weight": 1,
+    "imageURL": "google.com",
+    "author": "hessu hopo"
+}
+### Put article
+PUT http://{{host}}/api/articles/6382147a1bcdca2f24d09ebb
+Content-Type: application/json
+
+{
+    "title": "new title 2",
+    "author": "new author 2"
+}
+### Delete article
+DELETE http://{{host}}/api/articles/6382147a1bcdca2f24d09ebb
