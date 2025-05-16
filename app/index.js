@@ -20,8 +20,11 @@ const notFound = require('./middleware/notFound')
 const errorHandler = require('./middleware/errorHandler')
 //User model for admin creation
 const User = require('./models/User')
+//Add cors
+const cors = require("cors")
 //Initialize app
 const app = express()
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
