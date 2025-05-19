@@ -6,6 +6,12 @@ const { StatusCodes } = require('http-status-codes')
 const bcrypt = require('bcrypt')
 //const mongoose = require('mongoose')
 
+//get logged in user
+const getUser = asyncWrapper(async (req, res) => {
+    const user = req.user
+    res.status(StatusCodes.OK).json({ user })
+})
+
 //get users with email query
 const getUsers = asyncWrapper(async (req, res) => {
     const { email } = req.query
@@ -99,6 +105,7 @@ const updateUser = asyncWrapper(async (req, res) => {
 
 
 module.exports = {
+    getUser,
     getUsers,
     getSingleUser,
     deleteUser,

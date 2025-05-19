@@ -11,7 +11,7 @@ body {
 
 .banner h1 {
   font-size: 3em;
-  margin-right: 40%;
+  margin: auto;
 }
 
 .banner .login-button {
@@ -25,6 +25,21 @@ body {
   text-align: center;
   height: 1em;
   text-decoration: none;
+  color: black;
+}
+
+.banner .profile-button {
+  background-color: #f8f9fa;
+  border-radius: 0.5em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  margin-right: 1em;
+  margin-top: 0.5em;
+  width: 10em;
+  text-align: center;
+  height: 1em;
+  text-decoration: none;
+  color: black;
 }
 
 section {
@@ -51,4 +66,46 @@ section article img {
 
 section article h1 {
   font-size: 3em;
+}
+
+.form-div .form-container {
+  background-color: #f8f9fa;
+  height: 30em;
+  width: 40%;
+  margin: auto;
+  margin-top: 10%;
+  border-radius: 1em;
+}
+
+.form-div .form-container form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+}
+
+.form-div .form-container form > * {
+  margin: 0.5em;
+  font-size: 1.2em;
+}
+
+.form-div .form-container form input {
+  height: 2em;
+  border-radius: 0.5em;
+}
+
+.form-div .form-container form button {
+  height: 2em;
+  background-color: #1f2123;
+  color: #f8f9fa;
+  border-radius: 0.5em;
+}
+
+.form-div .form-container form button:disabled {
+  background-color: hsl(210, 1%, 31%);
+}
+
+.form-div .form-container form .error {
+  color: red;
 }
