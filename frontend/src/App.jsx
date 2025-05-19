@@ -1,13 +1,18 @@
 import "./App.css";
-import Banner from "../components/Banner";
-import Articles from "../components/Articles";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import FrontPage from "../pages/FrontPage";
+import LoginPage from "../pages/LoginPage";
+import NotFoundPage from "../pages/NotFoundPage";
 
 function App() {
   return (
-    <>
-      <Banner />
-      <Articles />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<FrontPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

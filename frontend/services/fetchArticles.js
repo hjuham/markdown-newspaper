@@ -8,7 +8,6 @@ export async function fetchArticles(setArticles, setLoading, setError) {
       setLoading(false);
     })
     .catch((error) => {
-      console.error("Error fetching users:", error);
       setError(error);
       setLoading(false);
     });
