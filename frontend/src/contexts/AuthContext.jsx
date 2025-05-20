@@ -10,7 +10,6 @@ export const AuthProvider = ({ children }) => {
     formData.append("username", email);
     formData.append("password", password);
     try {
-      console.log(email, password);
       const response = await fetch("http://localhost:5001/api/login/password", {
         method: "POST",
         headers: {
@@ -36,7 +35,7 @@ export const AuthProvider = ({ children }) => {
 
       if (response.ok) {
         const userData = await response.json();
-        setUser(userData);
+        setUser(userData.user);
       } else {
         setUser(null);
       }
@@ -46,13 +45,35 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const updateUser = async (id, email, interests) => {
+    console.log(id);
+    try {
+      const response = await fetch(`http://localhost:5001/api/users/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, interests }),
+        credentials: "include",
+      });
+      if (!response.ok) {
+        throw new Error("Updating user failed");
+      }
+      // const userData = await response.json();
+      // console.log(userData.user);
+      // setUser(userData.user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // // Call this in useEffect to load the user on app startup
   useEffect(() => {
     fetchUser();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, login }}>
+    <AuthContext.Provider value={{ user, login, updateUser, fetchUser }}>
       {children}
     </AuthContext.Provider>
   );

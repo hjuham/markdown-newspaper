@@ -28,9 +28,9 @@ Content-Type: application/json
     "password": "secret"
 }
 ### Put user
-PUT http://{{host}}/api/users/6387293eb665d3abe496ebb1
+PUT http://{{host}}/api/users/6826efb7c70e567c037187f0
 Content-Type: application/json
 
 {
-    "interests": ["Sports"]
+    "interests": ["Politics"]
 }

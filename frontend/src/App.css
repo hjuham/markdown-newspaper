@@ -5,13 +5,18 @@ body {
   height: 5em;
   background-color: #1f2123;
   display: flex;
-  color: #f8f9fa;
   justify-content: flex-end;
 }
 
 .banner h1 {
   font-size: 3em;
   margin: auto;
+  position: relative;
+}
+
+.banner h1 a {
+  text-decoration: none;
+  color: #f8f9fa;
 }
 
 .banner .login-button {
@@ -104,7 +109,7 @@ section article h1 {
 
 .form-div .form-container {
   background-color: #f8f9fa;
-  height: 30em;
+  height: 36em;
   width: 40%;
   margin: auto;
   margin-top: 10%;
@@ -122,6 +127,7 @@ section article h1 {
 .form-div .form-container form > * {
   margin: 0.5em;
   font-size: 1.2em;
+  width: 100%;
 }
 
 .form-div .form-container form input {
@@ -142,4 +148,38 @@ section article h1 {
 
 .form-div .form-container form .error {
   color: red;
+}
+
+.form-div .form-container form select {
+  height: 9em;
+}
+
+.custom-select-container {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.custom-select-box {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: #fff;
+}
+
+.custom-option {
+  padding: 0.3em 0.2em;
+  margin: 0.1em 0;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.custom-option:hover {
+  background-color: #e0e0e0;
+}
+
+.custom-option.selected {
+  background-color: #1f2123;
+  color: white;
 }

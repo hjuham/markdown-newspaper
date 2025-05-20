@@ -8,7 +8,10 @@ const bcrypt = require('bcrypt')
 
 //get logged in user
 const getUser = asyncWrapper(async (req, res) => {
-    const user = req.user
+    const user = await User.findById(req.user.id).select('email interests role')
+    if (!user) {
+    throw new NotFoundError('User not found')
+    }
     res.status(StatusCodes.OK).json({ user })
 })
 

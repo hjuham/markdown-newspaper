@@ -23,7 +23,9 @@ const Banner = () => {
   }, []);
   return (
     <div className="banner">
-      <h1>Newspaper X</h1>
+      <h1>
+        <Link to={"/"}>Newspaper X</Link>
+      </h1>
       <div ref={menuRef}>
         {user ? (
           <>
@@ -31,7 +33,7 @@ const Banner = () => {
               className="profile-button"
               onClick={() => setShowDropdown(!showDropdown)}
             >
-              {user.user.email}
+              {user.email}
             </button>
             {showDropdown ? <ProfileDropdown /> : null}
           </>
