@@ -1,9 +1,9 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import FrontPage from "../pages/FrontPage";
-import LoginPage from "../pages/LoginPage";
-import NotFoundPage from "../pages/NotFoundPage";
-import { AuthProvider } from "../contexts/AuthContext";
+import FrontPage from "./pages/FrontPage";
+import LoginPage from "./pages/LoginPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   return (
