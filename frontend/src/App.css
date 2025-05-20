@@ -32,14 +32,48 @@ body {
   background-color: #f8f9fa;
   border-radius: 0.5em;
   padding-top: 1.5em;
-  padding-bottom: 1.5em;
-  margin-right: 1em;
-  margin-top: 0.5em;
+  padding-bottom: 2em;
+  margin-right: 2em;
+  margin-top: 1.5em;
   width: 10em;
   text-align: center;
   height: 1em;
   text-decoration: none;
   color: black;
+}
+
+.profile-dropdown {
+  position: absolute;
+  right: 1em;
+  margin-top: 1em;
+  width: 10em;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  color: black;
+}
+
+.profile-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 1em 0;
+}
+
+.profile-dropdown li {
+  padding: 1em 1em;
+  cursor: pointer;
+}
+
+.profile-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.profile-dropdown li a {
+  text-decoration: none;
+  color: black;
+  display: block;
 }
 
 section {

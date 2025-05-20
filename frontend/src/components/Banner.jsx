@@ -1,20 +1,46 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { useState, useEffect, useRef } from "react";
+import ProfileDropdown from "./ProfileDropdown";
 
 const Banner = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
   const { user } = useAuth();
+  const menuRef = useRef();
+
+  // Close menu on outside click
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <div className="banner">
       <h1>Newspaper X</h1>
-      {user ? (
-        <Link className="profile-button" to={"/profile"}>
-          {user.user.email}
-        </Link>
-      ) : (
-        <Link className="login-button" to={"/login"}>
-          Log In
-        </Link>
-      )}
+      <div ref={menuRef}>
+        {user ? (
+          <>
+            <button
+              className="profile-button"
+              onClick={() => setShowDropdown(!showDropdown)}
+            >
+              {user.user.email}
+            </button>
+            {showDropdown ? <ProfileDropdown /> : null}
+          </>
+        ) : (
+          <Link className="login-button" to={"/login"}>
+            Log In
+          </Link>
+        )}
+      </div>
     </div>
   );
 };
