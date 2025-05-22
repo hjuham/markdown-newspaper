@@ -4,7 +4,6 @@ import Articles from "../components/Articles";
 const FrontPage = () => {
   return (
     <>
-      <Banner showLogin={true} />
       <Articles />
     </>
   );

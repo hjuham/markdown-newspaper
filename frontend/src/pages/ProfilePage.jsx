@@ -1,4 +1,3 @@
-import Banner from "../components/Banner";
 import { useAuth } from "../contexts/AuthContext";
 import { useState, useEffect } from "react";
 
@@ -49,7 +48,6 @@ const ProfilePage = () => {
   };
   return (
     <>
-      <Banner showLogin={false} />
       <div className="form-div">
         <div className="form-container">
           <form>

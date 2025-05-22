@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const ProfileDropdown = () => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
@@ -19,9 +19,16 @@ const ProfileDropdown = () => {
         <li>
           <Link to={"/profile"}>Profile</Link>
         </li>
-        <li>
-          <Link to={""}>Dashboard</Link>
-        </li>
+        {user.role === "admin" ? (
+          <>
+            {" "}
+            <li>
+              <Link to={"/dashboard"}>Admin dashboard</Link>
+            </li>
+          </>
+        ) : (
+          <></>
+        )}
         <li onClick={handleLogout}>Logout</li>
       </ul>
     </div>

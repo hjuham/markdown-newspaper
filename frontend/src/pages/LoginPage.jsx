@@ -1,4 +1,3 @@
-import Banner from "../components/Banner";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
@@ -31,7 +30,6 @@ const LoginPage = () => {
 
   return (
     <>
-      <Banner showLogin={false} />
       <div className="form-div">
         <div className="form-container">
           <form onSubmit={submitForm}>
