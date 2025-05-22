@@ -4,6 +4,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const login = async (email, password) => {
     const formData = new URLSearchParams();
@@ -21,10 +22,11 @@ export const AuthProvider = ({ children }) => {
       if (!response.ok) {
         throw new Error("Login failed");
       }
-      setUser(email);
     } catch (error) {
       console.log(error);
+      throw error;
     }
+    fetchUser();
   };
 
   const fetchUser = async () => {
@@ -39,14 +41,14 @@ export const AuthProvider = ({ children }) => {
       } else {
         setUser(null);
       }
-    } catch (err) {
-      console.error("Error fetching user:", err);
+    } catch (error) {
+      console.error("Error fetching user:", error);
       setUser(null);
+      throw error;
     }
   };
 
   const updateUser = async (id, email, interests) => {
-    console.log(id);
     try {
       const response = await fetch(`http://localhost:5001/api/users/${id}`, {
         method: "PUT",
@@ -59,22 +61,58 @@ export const AuthProvider = ({ children }) => {
       if (!response.ok) {
         throw new Error("Updating user failed");
       }
-      // const userData = await response.json();
-      // console.log(userData.user);
-      // setUser(userData.user);
     } catch (error) {
       console.log(error);
+      throw error;
+    }
+  };
+
+  const logout = async () => {
+    try {
+      const response = await fetch("http://localhost:5001/api/login/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      if (!response.ok) {
+        throw new Error("Logout failed");
+      }
+      setUser(null);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+
+  const signup = async (email, interests, password) => {
+    try {
+      const response = await fetch("http://localhost:5001/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, interests, password }),
+      });
+      if (!response.ok) {
+        throw new Error("Creating user failed");
+      }
+      login(email, password);
+    } catch (error) {
+      console.log(error);
+      throw error;
     }
   };
 
   // // Call this in useEffect to load the user on app startup
   useEffect(() => {
     fetchUser();
+    setLoading(false);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, login, updateUser, fetchUser }}>
-      {children}
+    <AuthContext.Provider
+      value={{ user, login, updateUser, fetchUser, logout, signup }}
+    >
+      {!loading && children}
     </AuthContext.Provider>
   );
 };
