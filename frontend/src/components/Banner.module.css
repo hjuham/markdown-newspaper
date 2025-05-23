@@ -1,0 +1,46 @@
+.banner {
+  height: 5em;
+  background-color: #1f2123;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.banner h1 {
+  font-size: 3em;
+  margin: auto;
+  position: relative;
+}
+
+.banner h1 a {
+  text-decoration: none;
+  color: #f8f9fa;
+}
+
+.banner .login {
+  background-color: #f8f9fa;
+  border-radius: 0.5em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  margin-right: 1em;
+  margin-top: 0.5em;
+  width: 5em;
+  text-align: center;
+  height: 1em;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.banner .profile {
+  background-color: #f8f9fa;
+  border-radius: 0.5em;
+  padding-top: 1.5em;
+  padding-bottom: 2em;
+  margin-right: 2em;
+  margin-top: 1.5em;
+  width: 10em;
+  text-align: center;
+  height: 1em;
+  text-decoration: none;
+  color: black;
+}

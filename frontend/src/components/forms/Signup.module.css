@@ -1,0 +1,79 @@
+.formContainer {
+  background-color: #f8f9fa;
+  height: 36em;
+  width: 40%;
+  margin: auto;
+  margin-top: 10%;
+  border-radius: 1em;
+}
+.formContainer form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+}
+
+.formContainer form > * {
+  margin: 0.5em;
+  font-size: 1.2em;
+  width: 100%;
+}
+
+.formContainer form input {
+  height: 2em;
+  border-radius: 0.5em;
+}
+.formContainer form button {
+  height: 2em;
+  background-color: #1f2123;
+  color: #f8f9fa;
+  border-radius: 0.5em;
+}
+
+.formContainer form button:disabled {
+  background-color: hsl(210, 1%, 31%);
+}
+
+.error {
+  color: red;
+}
+
+.formContainer form select {
+  height: 9em;
+}
+
+.customSelectContainer {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.customSelectBox {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: #fff;
+}
+
+.customSelectBox div {
+  padding: 0.3em 0.2em;
+  margin: 0.1em 0;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.customSelectBox div:hover {
+  background-color: #e0e0e0;
+}
+
+.customSelectBox div.selected {
+  background-color: #1f2123;
+  color: white;
+}
+
+.selected {
+  background-color: #1f2123;
+  color: white;
+}

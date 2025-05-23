@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useState, useEffect, useRef } from "react";
 import ProfileDropdown from "./ProfileDropdown";
+import styles from "./Banner.module.css";
 
 const Banner = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -22,7 +23,7 @@ const Banner = () => {
     };
   }, []);
   return (
-    <div className="banner">
+    <div className={styles.banner}>
       <h1>
         <Link to={"/"}>Newspaper X</Link>
       </h1>
@@ -30,7 +31,7 @@ const Banner = () => {
         {user ? (
           <>
             <button
-              className="profile-button"
+              className={styles.profile}
               onClick={() => setShowDropdown(!showDropdown)}
             >
               {user.email}
@@ -38,7 +39,7 @@ const Banner = () => {
             {showDropdown ? <ProfileDropdown /> : null}
           </>
         ) : (
-          <Link className="login-button" to={"/login"}>
+          <Link className={styles.login} to={"/login"}>
             Log In
           </Link>
         )}

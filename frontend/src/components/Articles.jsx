@@ -1,5 +1,6 @@
 import { fetchArticles } from "../services/fetchArticles";
 import { useEffect, useState } from "react";
+import styles from "./Articles.module.css";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -12,7 +13,7 @@ const Articles = () => {
   if (loading) return <p>Loading articles...</p>;
   if (error) return <p>Error: {error}</p>;
   return (
-    <section>
+    <section className={styles}>
       {articles.map((article) => (
         <article key={article._id}>
           <img src={article.imageURL} />

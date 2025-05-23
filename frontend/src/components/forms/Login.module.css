@@ -1,0 +1,44 @@
+.formContainer {
+  background-color: #f8f9fa;
+  height: 36em;
+  width: 40%;
+  margin: auto;
+  margin-top: 10%;
+  border-radius: 1em;
+}
+.formContainer form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+}
+
+.formContainer form > * {
+  margin: 0.5em;
+  font-size: 1.2em;
+  width: 100%;
+}
+
+.formContainer form input {
+  height: 2em;
+  border-radius: 0.5em;
+}
+.formContainer form button {
+  height: 2em;
+  background-color: #1f2123;
+  color: #f8f9fa;
+  border-radius: 0.5em;
+}
+
+.formContainer form button:disabled {
+  background-color: hsl(210, 1%, 31%);
+}
+
+.formContainer form .error {
+  color: red;
+}
+
+.formContainer form select {
+  height: 9em;
+}
