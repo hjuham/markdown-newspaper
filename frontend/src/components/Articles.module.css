@@ -7,6 +7,31 @@ section {
   width: 40%;
 }
 
+.toggle {
+  display: flex;
+  height: 5em;
+}
+
+.toggle button {
+  background: none;
+  width: 50%;
+  color: white;
+  padding-top: 1em;
+  border: none;
+  font-size: 1.2em;
+}
+
+.toggle button:hover {
+  background-color: #1f2123;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.selected {
+  text-shadow: 0.06em 0 0 currentColor;
+  text-decoration: underline;
+}
+
 section article {
   background-color: #1f2123;
   margin-top: 1em;
@@ -14,6 +39,9 @@ section article {
   flex-direction: column;
   width: 100%;
   color: #f8f9fa;
+}
+section article:first-of-type {
+  margin-top: 0;
 }
 
 section article img {

@@ -1,6 +1,10 @@
-import Banner from "../components/Banner";
+import Dashboard from "../components/Dashboard";
 
 const DashboardPage = () => {
-  return <></>;
+  return (
+    <>
+      <Dashboard />
+    </>
+  );
 };
 export default DashboardPage;
