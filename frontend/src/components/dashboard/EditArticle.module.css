@@ -1,0 +1,20 @@
+form {
+  padding-left: 1em;
+}
+
+form > * {
+  margin-top: 1em;
+}
+
+form h3 {
+  padding: 0 0 1em 0 !important;
+}
+
+form input {
+  width: 50%;
+}
+
+form textarea {
+  width: 50%;
+  height: 10em;
+}

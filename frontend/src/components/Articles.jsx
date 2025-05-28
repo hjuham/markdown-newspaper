@@ -1,4 +1,4 @@
-import { fetchArticles } from "../services/fetchArticles";
+import { fetchArticles } from "../services/articleRequests";
 import { useEffect, useState } from "react";
 import styles from "./Articles.module.css";
 import { useAuth } from "../contexts/AuthContext";
@@ -17,21 +17,25 @@ const Articles = () => {
   if (loading) return <p>Loading articles...</p>;
   if (error) return <p>Error: {error}</p>;
   return (
-    <section className={styles}>
-      <div className={styles.toggle}>
-        <button
-          className={myFeed === true ? styles.selected : ""}
-          onClick={() => setMyFeed(true)}
-        >
-          For you
-        </button>
-        <button
-          className={myFeed === false ? styles.selected : ""}
-          onClick={() => setMyFeed(false)}
-        >
-          All news
-        </button>
-      </div>
+    <section className={styles.dashboard}>
+      {user ? (
+        <div className={styles.toggle}>
+          <button
+            className={myFeed === true ? styles.selected : ""}
+            onClick={() => setMyFeed(true)}
+          >
+            For you
+          </button>
+          <button
+            className={myFeed === false ? styles.selected : ""}
+            onClick={() => setMyFeed(false)}
+          >
+            All news
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
       {myFeed === false
         ? articles.map((article) => (
             <article key={article._id}>
