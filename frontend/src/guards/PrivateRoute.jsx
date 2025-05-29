@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import NotFoundPage from "../pages/NotFoundPage";
 export default function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
   if (loading) {
@@ -8,8 +9,7 @@ export default function PrivateRoute({ children }) {
   }
 
   if (!user) {
-    console.log(user);
-    return <Navigate to="/" />;
+    return <NotFoundPage />;
   }
 
   return children;

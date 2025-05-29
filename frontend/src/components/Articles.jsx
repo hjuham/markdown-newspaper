@@ -41,7 +41,7 @@ const Articles = () => {
             <article key={article._id}>
               <img src={article.imageURL} />
               <h1>{article.title}</h1>
-              <p>{article.content}</p>
+              <p>{article.description}</p>
               <p>{article.author}</p>
             </article>
           ))
@@ -53,7 +53,7 @@ const Articles = () => {
               <article key={article._id}>
                 <img src={article.imageURL} alt="" />
                 <h1>{article.title}</h1>
-                <p>{article.content}</p>
+                <p>{article.description}</p>
                 <p>{article.author}</p>
               </article>
             ))}

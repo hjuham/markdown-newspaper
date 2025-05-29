@@ -29,7 +29,7 @@ export async function editArticle(
   const articles = "/api/articles/";
   try {
     setLoading(true);
-    const response = await fetch(baseUrl + articles + id, {
+    await fetch(baseUrl + articles + id, {
       method: "PUT",
       credentials: "include",
       headers: {
@@ -45,9 +45,23 @@ export async function editArticle(
         weight,
       }),
     });
-    if (response.ok) {
-      setLoading(false);
-    }
+  } catch (error) {
+    setError(error);
+  } finally {
+    setLoading(false);
+  }
+}
+
+export async function deleteArticle(id, setLoading, setError) {
+  const baseUrl = "http://localhost:5001";
+  const articles = "/api/articles/";
+  try {
+    setLoading(true);
+    await fetch(baseUrl + articles + id, {
+      method: "DELETE",
+      credentials: "include",
+    });
+    console.log(id);
   } catch (error) {
     setError(error);
   } finally {

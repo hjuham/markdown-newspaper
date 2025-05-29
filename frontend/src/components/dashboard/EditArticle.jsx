@@ -34,6 +34,7 @@ const EditArticle = ({ article, setEditing }) => {
     );
 
     setEditing(false);
+    window.location.reload();
   };
 
   if (error) return <p>Error editing article</p>;
