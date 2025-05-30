@@ -39,7 +39,7 @@ const Articles = () => {
       {myFeed === false
         ? articles.map((article) => (
             <article key={article._id}>
-              <img src={article.imageURL} />
+              <img src={article.imageURL !== "" ? article.imageURL : null} />
               <h1>{article.title}</h1>
               <p>{article.description}</p>
               <p>{article.author}</p>
@@ -51,7 +51,7 @@ const Articles = () => {
             )
             .map((article) => (
               <article key={article._id}>
-                <img src={article.imageURL} alt="" />
+                <img src={article.imageURL !== "" ? article.imageURL : null} />
                 <h1>{article.title}</h1>
                 <p>{article.description}</p>
                 <p>{article.author}</p>

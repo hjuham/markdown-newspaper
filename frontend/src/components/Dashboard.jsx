@@ -6,6 +6,7 @@ import UsersTable from "./dashboard/UsersTable";
 import ArticlesTable from "./dashboard/ArticlesTable";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [articles, setArticles] = useState([]);
@@ -18,6 +19,8 @@ const Dashboard = () => {
     fetchArticles(setArticles, setLoading, setError);
     fetchUsers(setUsers, setLoading, setError);
   }, []);
+
+  const navigate = useNavigate();
   return (
     <div className={styles.dashboard}>
       <div className={styles.menu}>
@@ -46,7 +49,12 @@ const Dashboard = () => {
             <>
               <h3>{activeTab}</h3>
               {activeTab === "articles" ? (
-                <ArticlesTable articles={articles} />
+                <div>
+                  <button onClick={() => navigate("/create-article")}>
+                    Create a new article
+                  </button>
+                  <ArticlesTable articles={articles} />
+                </div>
               ) : (
                 <UsersTable users={users} />
               )}{" "}

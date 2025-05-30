@@ -12,6 +12,7 @@ import DashboardPage from "./pages/DashboardPage";
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./guards/PrivateRoute";
 import AdminRoute from "./guards/AdminRoute";
+import CreateArticlePage from "./pages/CreateArticlePage";
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
             element={
               <AdminRoute>
                 <DashboardPage />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/create-article"
+            element={
+              <AdminRoute>
+                <CreateArticlePage />
               </AdminRoute>
             }
           />
