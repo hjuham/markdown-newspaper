@@ -13,6 +13,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./guards/PrivateRoute";
 import AdminRoute from "./guards/AdminRoute";
 import CreateArticlePage from "./pages/CreateArticlePage";
+import ArticlePage from "./pages/ArticlePage";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               </AdminRoute>
             }
           />
+          <Route path="/articles/:id" element={<ArticlePage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

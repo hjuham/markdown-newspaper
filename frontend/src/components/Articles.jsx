@@ -1,19 +1,15 @@
-import { fetchArticles } from "../services/articleRequests";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Articles.module.css";
 import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-const Articles = () => {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const Articles = ({ articles, loading, error }) => {
   const [myFeed, setMyFeed] = useState(false);
 
   const { user } = useAuth();
 
-  useEffect(() => {
-    fetchArticles(setArticles, setLoading, setError);
-  }, []);
+  const navigate = useNavigate();
+
   if (loading) return <p>Loading articles...</p>;
   if (error) return <p>Error: {error}</p>;
   return (
@@ -38,7 +34,10 @@ const Articles = () => {
       )}
       {myFeed === false
         ? articles.map((article) => (
-            <article key={article._id}>
+            <article
+              key={article._id}
+              onClick={() => navigate(`/articles/${article._id}`)}
+            >
               <img src={article.imageURL !== "" ? article.imageURL : null} />
               <h1>{article.title}</h1>
               <p>{article.description}</p>
@@ -50,7 +49,10 @@ const Articles = () => {
               article.tags.some((tag) => user.interests.includes(tag))
             )
             .map((article) => (
-              <article key={article._id}>
+              <article
+                key={article._id}
+                onClick={() => navigate(`/articles/${article._id}`)}
+              >
                 <img src={article.imageURL !== "" ? article.imageURL : null} />
                 <h1>{article.title}</h1>
                 <p>{article.description}</p>

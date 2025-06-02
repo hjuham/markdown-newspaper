@@ -1,0 +1,75 @@
+.sidebar {
+  color: white;
+  width: 30%;
+  padding-left: 1em;
+}
+
+/* MOST READ  */
+.sidebar .mostRead {
+  list-style: none;
+  padding: 0;
+  counter-reset: item;
+}
+
+.sidebar .mostRead li {
+  width: 100%;
+  display: flex;
+  margin: 1em;
+}
+
+.sidebar .mostRead li::before {
+  counter-increment: item;
+  content: counter(item) "";
+  font-weight: bold;
+  margin-right: 0.5em;
+  font-size: 1.5em;
+  color: gray;
+}
+
+.sidebar .mostRead a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  width: 100%;
+}
+
+.sidebar .mostRead span {
+  font-weight: bold;
+  font-size: 0.8em;
+  color: gray;
+}
+
+.sidebar .mostRead div {
+  margin-top: 1em;
+}
+
+/* RECENT */
+
+.sidebar .recent {
+  list-style: none;
+  padding: 0;
+  counter-reset: item;
+}
+
+.sidebar .recent li {
+  width: 100%;
+  display: flex;
+  margin: 1em;
+}
+
+.sidebar .recent a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  width: 100%;
+}
+
+.sidebar .recent span {
+  font-weight: bold;
+  font-size: 0.8em;
+  color: gray;
+}
+
+.sidebar .recent div {
+  margin-top: 1em;
+}

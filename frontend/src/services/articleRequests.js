@@ -13,6 +13,21 @@ export async function fetchArticles(setArticles, setLoading, setError) {
     });
 }
 
+export async function fetchArticle(id, setArticle, setLoading, setError) {
+  const baseUrl = "http://localhost:5001";
+  const articles = "/api/articles/";
+  fetch(baseUrl + articles + id)
+    .then((response) => response.json())
+    .then((data) => {
+      setArticle(data.article);
+      setLoading(false);
+    })
+    .catch((error) => {
+      setError(error);
+      setLoading(false);
+    });
+}
+
 export async function addArticle(
   title,
   description,

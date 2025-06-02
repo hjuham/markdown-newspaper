@@ -25,7 +25,7 @@ const Banner = () => {
   return (
     <div className={styles.banner}>
       <h1>
-        <Link to={"/"}>Newspaper X</Link>
+        <Link to={"/"}>Markdown Newspaper</Link>
       </h1>
       <div ref={menuRef}>
         {user ? (

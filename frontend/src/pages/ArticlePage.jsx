@@ -1,9 +1,8 @@
-import Articles from "../components/Articles";
+import Article from "../components/Article";
 import Sidebar from "../components/Sidebar";
 import { useState, useEffect } from "react";
 import { fetchArticles } from "../services/articleRequests";
-
-const FrontPage = () => {
+const ArticlePage = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,9 +18,9 @@ const FrontPage = () => {
         margin: "0px auto",
       }}
     >
-      <Articles articles={articles} loading={loading} error={error} />
+      <Article />
       <Sidebar articles={articles} loading={loading} error={error} />
     </div>
   );
 };
-export default FrontPage;
+export default ArticlePage;
