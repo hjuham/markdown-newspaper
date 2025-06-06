@@ -7,15 +7,24 @@ const FrontPage = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
   useEffect(() => {
     fetchArticles(setArticles, setLoading, setError);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 800);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
     <div
       style={{
         display: "flex",
-        width: "50vw",
+        width: isMobile ? "100vw" : "50vw",
         margin: "0px auto",
       }}
     >

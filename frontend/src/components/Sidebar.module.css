@@ -2,6 +2,7 @@
   color: white;
   width: 30%;
   padding-left: 1em;
+  margin-top: 1em;
 }
 
 /* MOST READ  */
@@ -72,4 +73,12 @@
 
 .sidebar .recent div {
   margin-top: 1em;
+}
+
+/*  Hide on small screen */
+
+@media (max-width: 800px) {
+  .sidebar {
+    display: none;
+  }
 }

@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
+import remarkGfm from "remark-gfm";
 
 const CreateArticle = () => {
   const [title, setTitle] = useState("");
@@ -108,7 +109,10 @@ const CreateArticle = () => {
       <div className={styles.inputs}>
         <h2>Create a new article</h2>
         <label htmlFor="title">Title:</label>
-        <input value={title} onChange={(e) => setTitle(e.target.value)}></input>
+        <textarea
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        ></textarea>
         <label htmlFor="author">Author:</label>
         <input
           value={author}
@@ -174,11 +178,13 @@ const CreateArticle = () => {
         </div>
       ) : (
         <div className={styles.preview}>
-          <MarkDown>{`${tags.join(
-            " "
-          )} \n # ${title} \n ### ${description} ![](${
-            imageURL !== "" ? imageURL : null
-          }) ${author} \n ${content}`}</MarkDown>
+          <div className={styles.article}>
+            <MarkDown remarkPlugins={[remarkGfm]}>{`*${tags.join(
+              " "
+            )}* \n# ${title} \n### ${description}\n ![](${
+              imageURL !== "" ? imageURL : null
+            }) ${author}  \n *timestamp*  \n${content}`}</MarkDown>
+          </div>
         </div>
       )}
     </div>

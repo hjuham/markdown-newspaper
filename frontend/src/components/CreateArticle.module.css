@@ -30,7 +30,7 @@
 .inputs textarea {
   width: 90%;
   resize: none;
-  height: 10em;
+  height: 8em;
 }
 
 .inputs input[type="checkbox"] {
@@ -72,4 +72,52 @@
   width: 80%;
   color: white;
   overflow: scroll;
+}
+
+.article {
+  margin-left: 1em;
+  width: 60%;
+  color: white;
+  overflow: scroll;
+  margin-top: 1em;
+}
+
+.article > * {
+  margin-top: 0.5em;
+}
+
+.article img {
+  width: 100%;
+  height: auto;
+}
+
+.article p {
+  line-height: 150%;
+  font-size: 18px;
+}
+
+.article ul {
+  line-height: 150%;
+  font-size: 18px;
+}
+
+.article table {
+  border-collapse: collapse;
+}
+
+.article td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.article a {
+  color: white;
+}
+
+@media (max-width: 800px) {
+  .article {
+    width: 100%;
+  }
 }

@@ -38,7 +38,6 @@ const Sidebar = ({ articles, loading, error }) => {
   const recentArticles = [...formattedArticles].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
-  console.log(sortedArticles);
 
   if (error) return <div>Error..</div>;
   if (loading) return null;

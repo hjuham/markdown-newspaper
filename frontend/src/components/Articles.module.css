@@ -1,5 +1,4 @@
 section {
-  text-align: center;
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -35,9 +34,14 @@ section article {
   margin-top: 1em;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
   color: #f8f9fa;
   cursor: pointer;
+  padding: 1em;
+}
+
+section article > * {
+  margin-top: 0.5em;
 }
 
 section article img {
@@ -45,5 +49,22 @@ section article img {
 }
 
 section article h1 {
-  font-size: 3em;
+  font-size: 2em;
+}
+
+section article h1 span {
+  color: gray;
+}
+
+.time {
+  color: gray;
+}
+
+@media (max-width: 800px) {
+  section {
+    width: 95%;
+  }
+  section article {
+    margin: 1em;
+  }
 }
