@@ -19,7 +19,12 @@ const getArticles = asyncWrapper(async (req, res) => {
         queryObject.author = { $regex: author, $options: 'i' }
     }
     if (tags) {
-        queryObject.tags = { $in: tags }
+        const tagArray = Array.isArray(tags) ? tags : tags.split(',')
+        queryObject.tags = {
+        $elemMatch: {
+            $in: tagArray.map(tag => new RegExp(`^${tag}$`, 'i'))
+        }
+    }
     }
     if (start, end) { //if both are provided
         queryObject["createdAt"] = {

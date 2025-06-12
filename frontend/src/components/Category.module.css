@@ -1,0 +1,14 @@
+.categoryBanner {
+  height: 8vh;
+  background-color: #1f2123;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoryBanner h2 {
+  margin: auto;
+  color: white;
+}

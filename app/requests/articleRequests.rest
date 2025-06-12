@@ -12,7 +12,7 @@ GET http://{{host}}/api/articles?start=2022-11-26&end=2023
 ### Get articles with sort query
 GET http://{{host}}/api/articles/?sort=weight
 ### Get articles with tags query
-GET http://{{host}}/api/articles?tags=Sports&tags=Politics
+GET http://{{host}}/api/articles?tags=sports,politics
 ### Get single article
 GET http://{{host}}/api/articles/6388a3bd32dfa0093f0d3049
 ### Post article

@@ -14,6 +14,7 @@ import PrivateRoute from "./guards/PrivateRoute";
 import AdminRoute from "./guards/AdminRoute";
 import CreateArticlePage from "./pages/CreateArticlePage";
 import ArticlePage from "./pages/ArticlePage";
+import CategoryPage from "./pages/CategoryPage";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
             }
           />
           <Route path="/articles/:id" element={<ArticlePage />} />
+          <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

@@ -3,7 +3,7 @@ import styles from "./Articles.module.css";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const Articles = ({ articles, loading, error }) => {
+const Articles = ({ articles, loading, error, foryou }) => {
   const [myFeed, setMyFeed] = useState(false);
 
   const { user } = useAuth();
@@ -43,7 +43,7 @@ const Articles = ({ articles, loading, error }) => {
   if (error) return <p>Error: {error}</p>;
   return (
     <section className={styles.dashboard}>
-      {user ? (
+      {user && foryou !== false ? (
         <div className={styles.toggle}>
           <button
             className={myFeed === true ? styles.selected : ""}

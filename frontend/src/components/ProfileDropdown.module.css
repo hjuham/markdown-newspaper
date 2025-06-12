@@ -1,8 +1,7 @@
 .dropdown {
-  position: absolute;
-  right: 1em;
-  margin-top: 1em;
-  width: 10em;
+  position: relative;
+  margin: 1em auto 0 auto;
+  width: 12em;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 1em;
@@ -20,6 +19,7 @@
 .dropdown li {
   padding: 1em 1em;
   cursor: pointer;
+  height: 3em;
 }
 
 .dropdown li:hover {
@@ -30,4 +30,11 @@
   text-decoration: none;
   color: black;
   display: block;
+  height: 100%;
+}
+
+.dropdown li svg {
+  width: 40%;
+  height: 40%;
+  margin-top: 1em;
 }

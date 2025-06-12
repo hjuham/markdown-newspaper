@@ -1,16 +1,29 @@
-export async function fetchArticles(setArticles, setLoading, setError) {
+export async function fetchArticles(setArticles, setLoading, setError, params) {
   const baseUrl = "http://localhost:5001";
   const articles = "/api/articles";
-  fetch(baseUrl + articles)
-    .then((response) => response.json())
-    .then((data) => {
-      setArticles(data.articles);
-      setLoading(false);
-    })
-    .catch((error) => {
-      setError(error);
-      setLoading(false);
-    });
+  if (!params) {
+    fetch(baseUrl + articles)
+      .then((response) => response.json())
+      .then((data) => {
+        setArticles(data.articles);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  } else {
+    fetch(baseUrl + articles + params)
+      .then((response) => response.json())
+      .then((data) => {
+        setArticles(data.articles);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }
 }
 
 export async function fetchArticle(id, setArticle, setLoading, setError) {

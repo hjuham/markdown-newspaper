@@ -1,46 +1,113 @@
 .banner {
   height: 10vh;
   background-color: #1f2123;
-  display: flex;
-  justify-content: flex-end;
 }
 
-.banner h1 {
-  font-size: 3em;
+.banner .wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 980px;
   margin: auto;
+  height: 100%;
+}
+
+.banner .wrapper h1 {
+  font-size: 2em;
+  margin: auto 0 auto 0;
   position: relative;
 }
 
-.banner h1 a {
+.banner .wrapper h1 a {
   text-decoration: none;
   color: #f8f9fa;
+  display: flex;
 }
 
-.banner .login {
-  background-color: #f8f9fa;
-  border-radius: 0.5em;
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
-  margin-right: 1em;
-  margin-top: 0.5em;
-  width: 5em;
-  text-align: center;
+.banner .wrapper h1 a img {
   height: 1em;
-  text-decoration: none;
-  color: black;
-  display: block;
+  width: auto;
 }
 
-.banner .profile {
+.banner .wrapper .search {
+  margin: auto;
+  color: white;
+  text-decoration: none;
+}
+
+.banner .wrapper .buttonWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 30em;
+  width: 15em;
+}
+.banner .wrapper .login {
+  margin: auto;
   background-color: #f8f9fa;
   border-radius: 0.5em;
-  padding-top: 1.5em;
-  padding-bottom: 2em;
-  margin-right: 2em;
-  margin-top: 1.5em;
+  height: 4em;
   width: 10em;
+  margin: auto 0 auto 0;
   text-align: center;
-  height: 1em;
   text-decoration: none;
   color: black;
+}
+
+.banner .wrapper .profile {
+  background-color: #f8f9fa;
+  border-radius: 0.5em;
+  height: 4em;
+  width: 5em;
+  margin: 1.5em auto 0 auto;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.categories {
+  height: 5vh;
+  background-color: #1f2123;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.categories .links {
+  width: 980px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  overflow: hidden;
+}
+
+.categories .links a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center; /* vertical centering */
+  height: 95%;
+  text-decoration: none; /* optional */
+  margin-bottom: 10px;
+}
+
+.categories .links .active {
+  font-weight: bold;
+  border-bottom: 10px solid white;
+}
+
+@media (max-width: 980px) {
+  .banner .wrapper {
+    width: 95vw;
+  }
+
+  .banner .wrapper h1 {
+    margin: auto 0 auto 1em;
+  }
+  .banner .wrapper h1 a p {
+    display: none;
+  }
+
+  .categories .links {
+    width: 95vw;
+  }
 }

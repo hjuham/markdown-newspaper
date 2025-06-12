@@ -39,7 +39,7 @@ th {
   color: white;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 980px) {
   .article {
     width: 100%;
   }
