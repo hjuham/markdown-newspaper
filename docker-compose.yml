@@ -1,0 +1,44 @@
+version: "3.9"
+name: newspaper-app
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo_container
+    restart: always
+    networks:
+      - newspaper-app
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "5001:5001"
+    env_file:
+      - .env
+    environment:
+      MONGO_URI_PRODUCTION: ${MONGO_URI_PRODUCTION}
+    depends_on:
+      - mongo
+    networks:
+      - newspaper-app
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - newspaper-app
+volumes:
+  mongo_data:
+
+networks:
+  newspaper-app:
+    driver: bridge

@@ -42,12 +42,14 @@
   width: 15em;
 }
 .banner .wrapper .login {
-  margin: auto;
+  display: grid;
+  place-items: center;
+  text-align: center;
   background-color: #f8f9fa;
   border-radius: 0.5em;
-  height: 4em;
-  width: 10em;
-  margin: auto 0 auto 0;
+  height: 3em;
+  width: 5em;
+  margin: 1.5em auto 0 auto;
   text-align: center;
   text-decoration: none;
   color: black;

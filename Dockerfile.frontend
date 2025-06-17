@@ -1,0 +1,17 @@
+# Dockerfile.frontend
+FROM node:22
+
+WORKDIR /frontend
+
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm install
+
+COPY frontend .
+
+RUN npm run build
+
+# Optional: Use Nginx to serve frontend
+FROM nginx:alpine
+COPY --from=0 /frontend/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
