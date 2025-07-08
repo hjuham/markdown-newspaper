@@ -43,7 +43,15 @@ const Articles = ({ articles, loading, error, foryou }) => {
 
   if (loading)
     return (
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box
+        sx={{
+          marginTop: "10%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
         <CircularProgress />
       </Box>
     );

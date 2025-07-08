@@ -16,6 +16,7 @@ import CreateArticlePage from "./pages/CreateArticlePage";
 import ArticlePage from "./pages/ArticlePage";
 import CategoryPage from "./pages/CategoryPage";
 import SearchPage from "./pages/SearchPage";
+import EditArticlePage from "./pages/EditArticlePage";
 
 function App() {
   return (
@@ -46,6 +47,14 @@ function App() {
             element={
               <AdminRoute>
                 <CreateArticlePage />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/edit-article/:id"
+            element={
+              <AdminRoute>
+                <EditArticlePage />
               </AdminRoute>
             }
           />

@@ -1,19 +1,19 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
-import EditArticle from "./EditArticle";
 import { useState } from "react";
 import { deleteArticle } from "../../services/articleRequests";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import { useNavigate } from "react-router-dom";
 
 const ArticlesTable = ({ articles }) => {
-  const [editing, setEditing] = useState(false);
-  const [selectedArticle, setSelectedArticle] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [modalId, setModalId] = useState("");
+
+  const navigate = useNavigate();
 
   const style = {
     position: "absolute",
@@ -39,7 +39,7 @@ const ArticlesTable = ({ articles }) => {
         return (
           <>
             <Button
-              onClick={(e) => editArticle(e, params.row)}
+              onClick={() => navigate(`/edit-article/${params.id}`)}
               variant="contained"
               color="warning"
             >
@@ -62,11 +62,6 @@ const ArticlesTable = ({ articles }) => {
     return row._id;
   }
 
-  const editArticle = (e, item) => {
-    setEditing(true);
-    setSelectedArticle(item);
-  };
-
   const confirmRemoveArticle = (e, item) => {
     setModalId(item._id);
     setOpenModal(true);
@@ -80,47 +75,43 @@ const ArticlesTable = ({ articles }) => {
 
   return (
     <div style={{ minHeight: 400, width: "100%" }}>
-      {editing ? (
-        <EditArticle article={selectedArticle} setEditing={setEditing} />
-      ) : (
-        <>
-          {loading}
-          {error}
-          <Modal
-            open={openModal}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Are you sure you want to delete the article?
-              </Typography>
-              <Button
-                disabled={loading}
-                variant="contained"
-                color="error"
-                onClick={() => removeArticle(modalId)}
-              >
-                Delete
-              </Button>
-              <Button
-                variant="contained"
-                color="#4dabf5"
-                onClick={() => setOpenModal(false)}
-              >
-                Cancel
-              </Button>
-            </Box>
-          </Modal>
-          <DataGrid
-            getRowId={getRowId}
-            rows={articles}
-            columns={columns}
-            pageSize={5}
-            disableRowSelectionOnClick
-          />
-        </>
-      )}
+      <>
+        {loading}
+        {error}
+        <Modal
+          open={openModal}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Are you sure you want to delete the article?
+            </Typography>
+            <Button
+              disabled={loading}
+              variant="contained"
+              color="error"
+              onClick={() => removeArticle(modalId)}
+            >
+              Delete
+            </Button>
+            <Button
+              variant="contained"
+              color="#4dabf5"
+              onClick={() => setOpenModal(false)}
+            >
+              Cancel
+            </Button>
+          </Box>
+        </Modal>
+        <DataGrid
+          getRowId={getRowId}
+          rows={articles}
+          columns={columns}
+          pageSize={5}
+          disableRowSelectionOnClick
+        />
+      </>
     </div>
   );
 };
