@@ -45,6 +45,8 @@ MONGO_URI_PRODUCTION="mongodb://mongo:27017/mydatabase"
 
 `docker-compose up --build`
 
+Open the website at http://localhost:3000/
+
 ### 4. Local Development (Without Docker)
 
 **Backend**
@@ -61,6 +63,8 @@ cd frontend
 npm install
 npm run dev
 ```
+
+Open the website at http://localhost:5173
 
 **Database**  
 Either run the database locally or deploy a database on MongoDB Atlas https://www.mongodb.com/ (remember to add the URI to `.env`)

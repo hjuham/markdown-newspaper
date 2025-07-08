@@ -9,14 +9,18 @@ const { StatusCodes } = require('http-status-codes')
 const getArticles = asyncWrapper(async (req, res) => {
     const { title, author, tags, start, end, sort, content } = req.query
     const queryObject = {}
+    const orConditions = []
     if (title) {
-        queryObject.title = { $regex: title, $options: 'i' }
+        orConditions.push({ title: { $regex: title, $options: 'i' } })
     }
     if (content) {
-        queryObject.content = { $regex: content, $options: 'i' }
+        orConditions.push({ content: { $regex: content, $options: 'i' } })
     }
     if (author) {
-        queryObject.author = { $regex: author, $options: 'i' }
+        orConditions.push({ author: { $regex: author, $options: 'i' } })
+    }
+    if (orConditions.length > 0) {
+        queryObject.$or = orConditions
     }
     if (tags) {
         const tagArray = Array.isArray(tags) ? tags : tags.split(',')
@@ -37,9 +41,9 @@ const getArticles = asyncWrapper(async (req, res) => {
         queryObject["createdAt"] = { ['$lte']: new Date(end) }
     }
     let result = Article.find(queryObject)
-    if (sort) { //Sorting biggest -> smallest. Date from newest -> oldest 
+    if (sort === "oldest") {
         const sortList = sort.split(',').join(' ')
-        result = (await result.sort(sortList)).reverse()
+        result = (await result.sort(sortList))
     } else {
         result = (await result.sort('createdAt')).reverse()
     }

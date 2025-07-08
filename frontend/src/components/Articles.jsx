@@ -2,6 +2,8 @@ import { useState } from "react";
 import styles from "./Articles.module.css";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Articles = ({ articles, loading, error, foryou }) => {
   const [myFeed, setMyFeed] = useState(false);
@@ -39,7 +41,12 @@ const Articles = ({ articles, loading, error, foryou }) => {
     };
   });
 
-  if (loading) return <p>Loading articles...</p>;
+  if (loading)
+    return (
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <CircularProgress />
+      </Box>
+    );
   if (error) return <p>Error: {error}</p>;
   return (
     <section className={styles.dashboard}>
