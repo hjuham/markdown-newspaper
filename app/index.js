@@ -8,6 +8,7 @@ const articles = require("./routes/articles");
 const users = require("./routes/users");
 const login = require("./routes/login");
 const feed = require("./routes/feed");
+const comments = require("./routes/comments")
 //Logging
 const morgan = require("morgan");
 const passport = require("passport");
@@ -56,6 +57,7 @@ app.use("/api/users", users);
 app.use("/api/articles", articles);
 app.use("/api/feed", feed);
 app.use("/api/login", login);
+app.use("/api/comments", comments)
 // middleware for error handling and unknown routes
 app.use(notFound);
 app.use(errorHandler);

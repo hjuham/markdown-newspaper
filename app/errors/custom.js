@@ -29,5 +29,10 @@ class ConflictError extends APIError {
         this.statusCode = StatusCodes.CONFLICT;
     }
 }
-
-module.exports = { APIError, BadRequestError, NotFoundError, UnauthenticatedError, ConflictError}
+class InternalServerError extends APIError {
+    constructor(message) {
+        super(message);
+        this.statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
+    }
+}
+module.exports = { APIError, BadRequestError, NotFoundError, UnauthenticatedError, ConflictError, InternalServerError}
