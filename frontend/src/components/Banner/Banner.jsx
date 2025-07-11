@@ -1,9 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { useState, useEffect, useRef } from "react";
-import ProfileDropdown from "./ProfileDropdown";
+import ProfileDropdown from "../ProfileDropDown/ProfileDropdown";
 import styles from "./Banner.module.css";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
 

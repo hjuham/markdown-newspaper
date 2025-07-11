@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import { fetchArticles } from "../services/articleRequests";
+import { fetchArticles } from "../../services/articleRequests";
 import { useState, useEffect } from "react";
-import Articles from "./Articles";
-import Sidebar from "./Sidebar";
+import Articles from "../Articles/Articles";
+import Sidebar from "../Sidebar/Sidebar";
 import styles from "./Category.module.css";
 
 const Category = () => {

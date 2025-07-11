@@ -1,9 +1,7 @@
-import { useParams } from "react-router-dom";
-import { editArticle } from "../services/articleRequests";
-import styles from "./EditArticle.module.css";
-import { Fragment, useState, useEffect } from "react";
+import styles from "./CreateArticle.module.css";
+import { Fragment, useState } from "react";
 import MarkDown from "react-markdown";
-import { fetchArticle } from "../services/articleRequests";
+import { addArticle } from "../../services/articleRequests";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -12,37 +10,18 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
 import remarkGfm from "remark-gfm";
 
-const EditArticle = () => {
-  const [article, setArticle] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+const CreateArticle = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState("Write your article in markdown!");
   const [tags, setTags] = useState([]);
   const [imageURL, setImageURL] = useState("");
   const [weight, setWeight] = useState(1);
   const [preview, setPreview] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [openModal, setOpenModal] = useState(false);
-
-  const { id } = useParams();
-
-  useEffect(() => {
-    fetchArticle(id, setArticle, setLoading, setError);
-  }, [id]);
-
-  useEffect(() => {
-    if (article) {
-      setTitle(article.title || "");
-      setDescription(article.description || "");
-      setAuthor(article.author || "");
-      setContent(article.content || "");
-      setTags(article.tags || []);
-      setImageURL(article.imageURL || "");
-      setWeight(article.weight || "");
-    }
-  }, [article]);
 
   const navigate = useNavigate();
 
@@ -77,10 +56,9 @@ const EditArticle = () => {
     }
   };
 
-  const callEditArticle = async () => {
+  const postArticle = async () => {
     setLoading(true);
-    await editArticle(
-      id,
+    await addArticle(
       title,
       description,
       author,
@@ -101,7 +79,7 @@ const EditArticle = () => {
       </Box>
     );
   return (
-    <div className={styles.editArticle}>
+    <div className={styles.createArticle}>
       <Modal
         open={openModal}
         aria-labelledby="modal-modal-title"
@@ -109,15 +87,15 @@ const EditArticle = () => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Are you sure you want to save the changes made to the article?
+            Are you sure you want to post the article?
           </Typography>
           <Button
             disabled={loading}
             variant="contained"
             color="success"
-            onClick={() => callEditArticle()}
+            onClick={() => postArticle()}
           >
-            Save
+            Post
           </Button>
           <Button
             variant="contained"
@@ -129,7 +107,7 @@ const EditArticle = () => {
         </Box>
       </Modal>
       <div className={styles.inputs}>
-        <h2>Edit an article</h2>
+        <h2>Create a new article</h2>
         <label htmlFor="title">Title:</label>
         <textarea
           value={title}
@@ -180,7 +158,7 @@ const EditArticle = () => {
             </Fragment>
           ))}
         </div>
-        <Button onClick={() => setOpenModal(true)}>Save changes</Button>
+        <Button onClick={() => setOpenModal(true)}>Post article</Button>
         <Button onClick={() => setPreview(!preview)}>Toggle preview</Button>
       </div>
       {!preview ? (
@@ -212,4 +190,4 @@ const EditArticle = () => {
     </div>
   );
 };
-export default EditArticle;
+export default CreateArticle;

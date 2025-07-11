@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./Articles.module.css";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";

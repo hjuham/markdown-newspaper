@@ -1,0 +1,123 @@
+.showComments {
+  background-color: #131415;
+  margin: auto;
+  display: block;
+  color: white;
+  height: 5em;
+  width: 10em;
+  border-radius: 1em;
+  font-weight: bold;
+  margin-bottom: 5em;
+  font-size: 1em;
+}
+
+.showComments:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+
+.comments {
+  margin-bottom: 3em;
+}
+
+.comments h3 {
+  margin-bottom: 1em;
+}
+.comments .comment {
+  width: 80%;
+  background-color: #292b2d;
+  border-radius: 1em;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.comments .comment .info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comments .comment .info span {
+  color: gray;
+}
+
+.comments .comment .likes {
+  display: inline-flex;
+}
+
+.comments .comment .likes button {
+  all: unset;
+  border-radius: 1em;
+  width: 3em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comments .comment .likes button:hover {
+  cursor: pointer;
+  background-color: #131415;
+}
+
+.comments .comment .likes button .iconActive {
+  color: white;
+}
+
+.comments .comment .likes button .iconInactive {
+  color: gray;
+}
+
+.comments .comment .likes p {
+  margin: auto;
+}
+
+.writeComment {
+  margin-bottom: 3em;
+}
+
+.writeComment p {
+  margin-bottom: 1em;
+}
+
+.writeComment textarea {
+  background-color: #292b2d;
+  margin-bottom: 2em;
+  width: 80%;
+  color: white;
+  font-size: 18px;
+  height: 10em;
+  border-radius: 1em;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 1em;
+}
+
+.writeComment button {
+  background-color: #292b2d;
+  display: inline-block;
+  height: 3em;
+  color: white;
+  font-weight: bold;
+  border-radius: 1em;
+  width: 80%;
+  padding: 1em;
+}
+.writeComment button:hover {
+  cursor: pointer;
+}
+
+.writeComment textarea:disabled,
+.writeComment button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.writeComment textarea:disabled {
+  background-color: #1f2021;
+  color: #aaa;
+}
+
+.writeComment button:disabled {
+  background-color: #1f2021;
+  color: #aaa;
+}

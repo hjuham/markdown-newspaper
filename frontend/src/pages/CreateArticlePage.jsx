@@ -1,4 +1,4 @@
-import CreateArticle from "../components/CreateArticle";
+import CreateArticle from "../components/CreateArticle/CreateArticle";
 
 const CreateArticlePage = () => {
   return <CreateArticle />;

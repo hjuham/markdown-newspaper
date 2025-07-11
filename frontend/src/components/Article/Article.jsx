@@ -1,18 +1,18 @@
 import { useParams } from "react-router-dom";
-import { fetchArticle } from "../services/articleRequests";
-import { useState, useEffect } from "react";
+import { fetchArticle } from "../../services/articleRequests";
+import { useState, useEffect, Suspense } from "react";
 import MarkDown from "react-markdown";
 import styles from "./Article.module.css";
 import remarkGfm from "remark-gfm";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Button } from "@mui/material";
-import EditArticle from "./EditArticle";
 import { useNavigate } from "react-router-dom";
-import { deleteArticle } from "../services/articleRequests";
+import { deleteArticle } from "../../services/articleRequests";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
+import Comments from "../Comments/Comments";
 
 const Article = () => {
   const [article, setArticle] = useState({});
@@ -136,6 +136,9 @@ const Article = () => {
       } \n### ${article.description}\n![article image](${
         article.imageURL !== "" ? article.imageURL : null
       })\n${article.author}  \n ${formatted} \n${article.content}\n`}</MarkDown>
+      <Suspense>
+        <Comments />
+      </Suspense>
     </div>
   );
 };

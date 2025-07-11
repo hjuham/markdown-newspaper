@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //Banner
-import Banner from "./components/Banner";
+import Banner from "./components/Banner/Banner";
 //Pages
 import FrontPage from "./pages/FrontPage";
 import LoginPage from "./pages/LoginPage";

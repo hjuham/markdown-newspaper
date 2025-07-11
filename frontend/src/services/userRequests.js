@@ -1,6 +1,7 @@
+const baseUrl = "http://localhost:5001";
+const users = "/api/users/";
+
 export async function fetchUsers(setUsers, setLoading, setError) {
-  const baseUrl = "http://localhost:5001";
-  const users = "/api/users";
   try {
     setLoading(true);
     const response = await fetch(baseUrl + users, {
@@ -25,8 +26,6 @@ export async function editUser(
   setLoading,
   setError
 ) {
-  const baseUrl = "http://localhost:5001";
-  const users = "/api/users/";
   try {
     setLoading(true);
     await fetch(baseUrl + users + id, {
@@ -49,8 +48,6 @@ export async function editUser(
 }
 
 export async function deleteUser(id, setLoading, setError) {
-  const baseUrl = "http://localhost:5001";
-  const users = "/api/users/";
   try {
     setLoading(true);
     await fetch(baseUrl + users + id, {

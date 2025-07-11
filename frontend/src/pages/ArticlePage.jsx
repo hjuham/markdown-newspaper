@@ -1,5 +1,5 @@
-import Article from "../components/Article";
-import Sidebar from "../components/Sidebar";
+import Article from "../components/Article/Article";
+import Sidebar from "../components/Sidebar/Sidebar";
 import { useState, useEffect } from "react";
 import { fetchArticles } from "../services/articleRequests";
 const ArticlePage = () => {

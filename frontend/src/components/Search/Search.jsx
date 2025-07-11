@@ -1,7 +1,7 @@
 import styles from "./Search.module.css";
 import { useState } from "react";
-import { fetchArticles } from "../services/articleRequests";
-import Articles from "./Articles";
+import { fetchArticles } from "../../services/articleRequests";
+import Articles from "../Articles/Articles";
 
 const Search = () => {
   const [search, setSearch] = useState("");

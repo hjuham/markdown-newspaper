@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./ProfileDropdown.module.css";
 import PersonIcon from "@mui/icons-material/Person";

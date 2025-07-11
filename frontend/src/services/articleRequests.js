@@ -1,6 +1,7 @@
+const baseUrl = "http://localhost:5001";
+const articles = "/api/articles/";
+
 export async function fetchArticles(setArticles, setLoading, setError, params) {
-  const baseUrl = "http://localhost:5001";
-  const articles = "/api/articles";
   if (!params) {
     fetch(baseUrl + articles)
       .then((response) => response.json())
@@ -27,8 +28,6 @@ export async function fetchArticles(setArticles, setLoading, setError, params) {
 }
 
 export async function fetchArticle(id, setArticle, setLoading, setError) {
-  const baseUrl = "http://localhost:5001";
-  const articles = "/api/articles/";
   fetch(baseUrl + articles + id)
     .then((response) => response.json())
     .then((data) => {
@@ -52,8 +51,6 @@ export async function addArticle(
   setLoading,
   setError
 ) {
-  const baseUrl = "http://localhost:5001";
-  const articles = "/api/articles/";
   try {
     setLoading(true);
     await fetch(baseUrl + articles, {
@@ -91,8 +88,6 @@ export async function editArticle(
   setLoading,
   setError
 ) {
-  const baseUrl = "http://localhost:5001";
-  const articles = "/api/articles/";
   try {
     setLoading(true);
     await fetch(baseUrl + articles + id, {
@@ -119,15 +114,12 @@ export async function editArticle(
 }
 
 export async function deleteArticle(id, setLoading, setError) {
-  const baseUrl = "http://localhost:5001";
-  const articles = "/api/articles/";
   try {
     setLoading(true);
     await fetch(baseUrl + articles + id, {
       method: "DELETE",
       credentials: "include",
     });
-    console.log(id);
   } catch (error) {
     setError(error);
   } finally {

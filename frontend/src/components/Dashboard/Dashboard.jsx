@@ -1,9 +1,9 @@
 import styles from "./Dashboard.module.css";
 import { useState, useEffect } from "react";
-import { fetchArticles } from "../services/articleRequests";
-import { fetchUsers } from "../services/userRequests";
-import UsersTable from "./dashboard/UsersTable";
-import ArticlesTable from "./dashboard/ArticlesTable";
+import { fetchArticles } from "../../services/articleRequests";
+import { fetchUsers } from "../../services/userRequests";
+import UsersTable from "./UsersTable";
+import ArticlesTable from "./ArticlesTable";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";

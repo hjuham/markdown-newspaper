@@ -1,4 +1,4 @@
-import EditArticle from "../components/EditArticle";
+import EditArticle from "../components/EditArticle/EditArticle";
 
 const EditArticlePage = () => {
   return <EditArticle />;
