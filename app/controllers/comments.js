@@ -12,20 +12,15 @@ const {
 const { StatusCodes } = require("http-status-codes");
 const mongoose = require("mongoose");
 
-const handleCommentAction = asyncWrapper(async (req, res) => {
+const handleCommentAction = asyncWrapper(async (req, res, next) => {
   const { action } = req.body;
-  try {
-    switch (action) {
-      case "like":
-        return await likeComment(req, res);
-      case "unlike":
-        return await removeLikeComment(req, res);
-      default:
-        throw new BadRequestError("Wrong like action");
-    }
-  } catch (err) {
-    console.error(err);
-    throw new InternalServerError();
+  switch (action) {
+    case "like":
+      return await likeComment(req, res, next);
+    case "unlike":
+      return await removeLikeComment(req, res, next);
+    default:
+      throw new BadRequestError("Wrong like action");
   }
 });
 
@@ -37,8 +32,34 @@ const getArticleComments = asyncWrapper(async (req, res) => {
   }
 
   const comments = await Comment.find({ articleId: id });
+  const commentLikes = await CommentLikes.find({ articleId: id });
+  const likesMap = {};
+  for (const like of commentLikes) {
+    const commentId = like.commentId.toString();
+    if (!likesMap[commentId]) {
+      likesMap[commentId] = [];
+    }
+    likesMap[commentId].push(like.userId.toString());
+  }
 
-  res.status(StatusCodes.OK).json({ comments });
+  const enrichedComments = comments.map((comment) => {
+    const commentId = comment._id.toString();
+    const likesForComment = likesMap[commentId] || [];
+    let likedByCurrentUser;
+    if (req.user !== undefined) {
+      likedByCurrentUser = likesForComment.includes(req.user.id);
+    }
+
+    return {
+      ...comment.toObject(),
+      likes: likesForComment.length,
+      likedByCurrentUser,
+    };
+  });
+
+  res.status(StatusCodes.OK).json({ comments: enrichedComments });
+
+  // res.status(StatusCodes.OK).json({ comments });
 });
 
 const createComment = asyncWrapper(async (req, res) => {
@@ -69,14 +90,14 @@ const deleteComment = asyncWrapper(async (req, res) => {
   return res.status(StatusCodes.OK).json({ success: true });
 });
 
-const likeComment = asyncWrapper(async (req, res) => {
+const likeComment = asyncWrapper(async (req, res, next) => {
   const { id } = req.params;
   //Schema checks if user already has a like on comment
-  const commentLike = await Comment.findOne({
+  const commentLike = await CommentLikes.findOne({
     commentId: id,
     userId: req.user.id,
   });
-  if (commentLike) {
+  if (commentLike !== null) {
     throw new ConflictError("User has already liked the comment");
   }
   const commentLikes = new CommentLikes({
@@ -87,7 +108,7 @@ const likeComment = asyncWrapper(async (req, res) => {
   res.status(StatusCodes.CREATED).json({ savedCommentLike });
 });
 
-const removeLikeComment = asyncWrapper(async (req, res) => {
+const removeLikeComment = asyncWrapper(async (req, res, next) => {
   const { id } = req.params;
   const commentLikes = await CommentLikes.findOneAndRemove({
     commentId: id,

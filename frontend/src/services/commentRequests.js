@@ -7,7 +7,7 @@ export async function fetchArticleComments(
   setLoading,
   setError
 ) {
-  fetch(baseUrl + comments + id)
+  fetch(baseUrl + comments + id, { credentials: "include" })
     .then((response) => response.json())
     .then((data) => {
       setComments(data.comments);
@@ -45,6 +45,35 @@ export async function deleteComment(id, commentId, setLoading, setError) {
     await fetch(baseUrl + comments + id + "/" + commentId, {
       method: "DELETE",
       credentials: "include",
+    });
+  } catch (error) {
+    setError(error);
+  } finally {
+    setLoading(false);
+  }
+}
+
+export async function likeComment(id, commentId, setLoading, setError) {
+  try {
+    await fetch(baseUrl + comments + id + "/" + commentId, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "like" }),
+    });
+  } catch (error) {
+    setError(error);
+  } finally {
+    setLoading(false);
+  }
+}
+export async function removeLikeComment(id, commentId, setLoading, setError) {
+  try {
+    await fetch(baseUrl + comments + id + "/" + commentId, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "unlike" }),
     });
   } catch (error) {
     setError(error);

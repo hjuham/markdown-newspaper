@@ -3,6 +3,8 @@ import {
   fetchArticleComments,
   addComment,
   deleteComment,
+  likeComment,
+  removeLikeComment,
 } from "../../services/commentRequests";
 import { useParams } from "react-router-dom";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -65,17 +67,11 @@ const Comments = () => {
       formatted = `${day}.${month}`;
     }
 
-    //Implement check if comment was liked by user
-    //Placeholder
-    const isActive = false;
-    //Implement like count
-    //Placeholder
-    const likes = 12;
     return (
       <div className={styles.comment} key={comment._id}>
         <p className={styles.info}>
           <b>Anonymous</b>
-          {user.role === "admin" ? (
+          {user !== null && user.role === "admin" ? (
             <Button
               onClick={() => {
                 setOpenModal(true);
@@ -93,12 +89,21 @@ const Comments = () => {
         </p>
         <p>{comment.text}</p>
         <div className={styles.likes}>
-          <button>
+          <button
+            onClick={() =>
+              //Pass comment id and boolean of like status
+              handleLikeClick(comment._id, comment.likedByCurrentUser)
+            }
+          >
             <ThumbUpIcon
-              className={isActive ? styles.iconActive : styles.iconInactive}
+              className={
+                comment.likedByCurrentUser
+                  ? styles.iconActive
+                  : styles.iconInactive
+              }
             />
           </button>
-          <p>{likes}</p>
+          <p>{comment.likes}</p>
         </div>
       </div>
     );
@@ -126,6 +131,16 @@ const Comments = () => {
         prevComments.filter((comment) => comment._id !== deleteCommentId)
       );
       setOpenModal(false);
+    }
+  };
+
+  //Implement UI updatating
+  const handleLikeClick = async (commentId, liked) => {
+    setLoading(true);
+    if (!liked) {
+      await likeComment(id, commentId, setLoading, setError);
+    } else if (liked) {
+      await removeLikeComment(id, commentId, setLoading, setError);
     }
   };
 
