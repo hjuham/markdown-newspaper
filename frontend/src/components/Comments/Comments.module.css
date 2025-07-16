@@ -23,6 +23,15 @@
 .comments h3 {
   margin-bottom: 1em;
 }
+
+.comments .sort {
+  margin-bottom: 2em;
+}
+
+.comments .sort select {
+  margin-left: 1em;
+}
+
 .comments .comment {
   width: 80%;
   background-color: #292b2d;

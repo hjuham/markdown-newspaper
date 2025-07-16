@@ -110,7 +110,7 @@ const likeComment = asyncWrapper(async (req, res, next) => {
 
 const removeLikeComment = asyncWrapper(async (req, res, next) => {
   const { id } = req.params;
-  const commentLikes = await CommentLikes.findOneAndRemove({
+  await CommentLikes.findOneAndRemove({
     commentId: id,
     userId: req.user.id,
   });
