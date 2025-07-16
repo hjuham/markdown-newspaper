@@ -61,7 +61,7 @@ const Banner = () => {
                 {showDropdown ? <ProfileDropdown /> : null}
               </>
             ) : (
-              <Link className={styles.login} to={"/login"}>
+              <Link data-cy="login" className={styles.login} to={"/login"}>
                 Log In
               </Link>
             )}

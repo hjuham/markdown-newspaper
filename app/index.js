@@ -8,7 +8,7 @@ const articles = require("./routes/articles");
 const users = require("./routes/users");
 const login = require("./routes/login");
 const feed = require("./routes/feed");
-const comments = require("./routes/comments")
+const comments = require("./routes/comments");
 //Logging
 const morgan = require("morgan");
 const passport = require("passport");
@@ -23,6 +23,7 @@ const errorHandler = require("./middleware/errorHandler");
 const User = require("./models/User");
 //Add cors
 const cors = require("cors");
+const mongoose = require("mongoose");
 //Initialize app
 const app = express();
 
@@ -30,8 +31,8 @@ if (process.env.NODE_ENV === "development") {
   app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 } else if (process.env.NODE_ENV === "production") {
   app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-} else {
-  app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+} else if (process.env.NODE_ENV === "test") {
+  app.use(cors({ origin: "http://localhost:4173", credentials: true }));
 }
 app.use(morgan("dev"));
 app.use(express.json());
@@ -57,18 +58,19 @@ app.use("/api/users", users);
 app.use("/api/articles", articles);
 app.use("/api/feed", feed);
 app.use("/api/login", login);
-app.use("/api/comments", comments)
+app.use("/api/comments", comments);
 // middleware for error handling and unknown routes
 app.use(notFound);
 app.use(errorHandler);
 //start after connecting to mongodb
 const start = async () => {
   try {
-    await connectMongoDB(config.MONGODB_URI);
+    connectMongoDB(config.MONGODB_URI);
   } catch (error) {
     console.log(error);
   }
 };
+
 //Create admin user with details from .env
 const createAdmin = async (req, res) => {
   const email = config.ADMIN_EMAIL;
@@ -85,6 +87,7 @@ const createAdmin = async (req, res) => {
   });
   await user.save(user);
 };
+
 createAdmin();
 start();
 
